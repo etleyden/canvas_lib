@@ -1,5 +1,5 @@
 #include "shapes.h"
-#include "ppm_img.h"
+#include "img.h"
 #include <iostream> //for debugging
 
 Shape::Shape(Color* fill_color) {
@@ -39,7 +39,7 @@ bool Circle::isWithinCircle(int c_x, int c_y, int r, int x, int y) {
 }
 
 
-void Circle::render(PPM_Img *img) {
+void Circle::render(Img *img) {
     int start_pos = img->getPositionInVector(x - r, y - r); 
     int current_pos = 0;
     int diameter = 2 * r;
@@ -64,7 +64,7 @@ Rectangle::Rectangle(int x, int y, int width, int height, Colors fill_color) : S
     this->x = x; this->y = y; this->width = width; this->height = height;
 }
 
-void Rectangle::render(PPM_Img* img) {
+void Rectangle::render(Img* img) {
     int start_pos = img->getPositionInVector(x, y);
     int current_pos = 0;
     for(int i = 0; i < height; i++) {

@@ -1,8 +1,8 @@
 #include <iostream>
-#include "ppm_img.h"
+#include "img.h"
 
 //Constructors
-PPM_Img::PPM_Img(int width, int height) {
+Img::Img(int width, int height) {
     this->width = width;
     this->height = height;
     this->fill_color = (new Color(255, 255, 255));
@@ -14,36 +14,36 @@ PPM_Img::PPM_Img(int width, int height) {
 }
 
 //Checkers
-bool PPM_Img::isWithinBounds(int x, int y) {
+bool Img::isWithinBounds(int x, int y) {
     bool isWithinXBounds = 0 <= x && x < width;
     bool isWithinYBounds = 0 <= y && y < height;
     return isWithinXBounds && isWithinYBounds;
 }
-int PPM_Img::getPositionInVector(int x, int y) {
+int Img::getPositionInVector(int x, int y) {
     return (y * this->height) + x;
 }
 
 //Rendering Tools
-void PPM_Img::fillPixel(int pos_in_vector, Color* fill_color) {
+void Img::fillPixel(int pos_in_vector, Color* fill_color) {
     image[pos_in_vector] = new Color(*fill_color);
 }
-void PPM_Img::addShape(Shape* shape) {
+void Img::addShape(Shape* shape) {
     shapes.push_back(shape);
 }
 
 //Draw Settings
 
 //Core function
-void PPM_Img::render(std::ostream& out) {
-    out << "P3\n" << width << " " << height << "\n255\n";
-    for(auto & i : shapes) {
-        i->render(this);
-    }
-    for(auto & i : image) {
-        i->print(out);
+void Img::render(std::string filename) {
+    std::string extension = filename.substr(filename.find_last_of(".") + 1);
+
+    if(extension == "ppm") {
+        PPM::render(filename, this);
     }
 }
 
 //Getters and Setters
-int PPM_Img::getHeight() {return height;}
-int PPM_Img::getWidth() {return width;}
+int Img::getHeight() {return height;}
+int Img::getWidth() {return width;}
+std::vector<Shape*> Img::getShapes() {return shapes;}
+std::vector<Color*> Img::getImageVector() {return image;}

@@ -1,12 +1,14 @@
-#ifndef PPM_IMG_H
-#define PPM_IMG_H
+#ifndef IMG_H
+#define IMG_H
 
 #include <vector>
 #include <ostream>
-#include "color.h"
+#include <string>
+#include "img_util.h"
 #include "shapes.h"
+#include "formats.h"
 
-class PPM_Img {
+class Img {
     int width, height;
     std::vector<Shape*> shapes;
     std::vector<Color*> image; 
@@ -14,7 +16,7 @@ class PPM_Img {
     Color *stroke_color;
     int stroke_width;
 public:
-    PPM_Img(int, int);
+    Img(int, int);
 
     //Checkers
     bool isWithinBounds(int, int);
@@ -29,11 +31,13 @@ public:
     void background(Color); //TODO
 
     //Core function
-    void render(std::ostream&);
+    void render(std::string);
 
     //Getters & Setters
     int getHeight();
     int getWidth();
+    std::vector<Shape*> getShapes();
+    std::vector<Color*> getImageVector();
 };
 
 #endif

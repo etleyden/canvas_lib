@@ -1,4 +1,4 @@
-#include "color.h"
+#include "img_util.h"
 
 Color::Color(int r, int g, int b) {
     this->r = r;
@@ -16,7 +16,7 @@ Color::Color(Colors color) {
     switch(color) {
         case BLACK:
             r = 0; g = 0; b = 0;
-            break; 
+            break;
         case WHITE:
             r = 255; g = 255; b = 255;
             break;
@@ -34,4 +34,12 @@ Color::Color(Colors color) {
 
 void Color::print(std::ostream& out) {
     out << r << " " << g << " " << b << "\n";
+}
+
+Dimension::Dimension(int w, int h) {
+    this->w = w; this->h = h;
+}
+Dimension::Dimension(Dimension& d) {
+    this->w = d.w;
+    this->h = d.h;
 }

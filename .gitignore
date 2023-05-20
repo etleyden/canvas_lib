@@ -1,1 +1,4 @@
 .cache/
+tests/compile_commands.json
+.vscode/
+tests/.cache

@@ -1,10 +1,10 @@
 #ifndef SHAPES_H
 #define SHAPES_H
 
-#include "color.h"
+#include "img_util.h"
 #include <vector>
 
-class PPM_Img; //forward declaration
+class Img; //forward declaration
 
 class Shape {
     int x, y;
@@ -20,7 +20,7 @@ public:
     Color* getFill();
     void setStroke(Color*);
     void setStroke(int, int, int);
-    virtual void render(PPM_Img*) {};
+    virtual void render(Img*) {};
 };
 
 class Circle : public Shape {
@@ -29,7 +29,7 @@ public:
     Circle(int, int, int, Color*);
     Circle(int, int, int, Colors);
     bool isWithinCircle(int, int, int, int, int);
-    void render(PPM_Img*);
+    void render(Img*);
 };
 
 class Rectangle : public Shape {
@@ -37,7 +37,7 @@ class Rectangle : public Shape {
 public:
     Rectangle(int, int, int, int, Color*);
     Rectangle(int, int, int, int, Colors);
-    void render(PPM_Img*);
+    void render(Img*);
 };
 
 #endif
