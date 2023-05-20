@@ -6,6 +6,11 @@ Color::Color(int r, int g, int b) {
     this->b = b;
 }
 
+Color::Color(Color* color) {
+    this->r = color->r;
+    this->g = color->g;
+    this->b = color->b;
+}
 Color::Color(Color& color) {
     this->r = color.r;
     this->g = color.g;

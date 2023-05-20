@@ -31,7 +31,6 @@ void Img::addShape(Shape* shape) {
     shapes.push_back(shape);
 }
 
-//Draw Settings
 
 //Core function
 void Img::render(std::string filename) {

@@ -17,6 +17,7 @@ class Color {
     int r, g, b;
 public:
     Color(Colors);
+    Color(Color*);
     Color(Color&);
     Color(int, int, int);
     void print(std::ostream&);
